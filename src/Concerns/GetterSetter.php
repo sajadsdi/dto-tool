@@ -1,9 +1,9 @@
 <?php
 
-namespace Sajad\DtoTool\Concerns;
+namespace Sajadsdi\DtoTool\Concerns;
 
-use Sajad\DtoTool\Exceptions\MethodNotFoundException;
-use Sajad\DtoTool\Exceptions\PropertyNotFoundException;
+use Sajadsdi\DtoTool\Exceptions\MethodNotFoundException;
+use Sajadsdi\DtoTool\Exceptions\PropertyNotFoundException;
 
 trait GetterSetter
 {

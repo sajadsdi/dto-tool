@@ -1,6 +1,6 @@
 <?php
 
-namespace Sajad\DtoTool\Concerns;
+namespace Sajadsdi\DtoTool\Concerns;
 
 trait DTOArray
 {

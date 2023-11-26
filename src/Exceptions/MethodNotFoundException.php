@@ -1,6 +1,6 @@
 <?php
 
-namespace Sajad\DtoTool\Exceptions;
+namespace Sajadsdi\DtoTool\Exceptions;
 
 
 class MethodNotFoundException extends \Exception
