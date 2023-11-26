@@ -15,6 +15,7 @@
         }
     ],
     "require": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "sajadsdi/php-reflection": "^1.0"
     }
 }

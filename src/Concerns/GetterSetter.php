@@ -4,6 +4,7 @@ namespace Sajadsdi\DtoTool\Concerns;
 
 use Sajadsdi\DtoTool\Exceptions\MethodNotFoundException;
 use Sajadsdi\DtoTool\Exceptions\PropertyNotFoundException;
+use Sajadsdi\PhpReflection\Concerns\Reflection;
 
 trait GetterSetter
 {
@@ -49,7 +50,7 @@ trait GetterSetter
     private function getter(string $name): mixed
     {
         $pName = lcfirst(str_replace('get', '', $name));
-        if (in_array($pName, $this->getPublicProperties())) {
+        if (in_array($pName, $this->getPublicProperties($this))) {
             if (isset($this->{$pName})) {
                 return $this->{$pName};
             }
@@ -69,7 +70,7 @@ trait GetterSetter
     private function setter(string $name, mixed $data): static
     {
         $pName = lcfirst(str_replace('set', '', $name));
-        if (in_array($pName, $this->getPublicProperties())) {
+        if (in_array($pName, $this->getPublicProperties($this))) {
             $this->{$pName} = $data;
             return $this;
         }
@@ -85,7 +86,8 @@ trait GetterSetter
      */
     public function __set(string $name, $value): void
     {
-        $this->setter($name, $value);
+        $method = "set".ucfirst($name);
+        $this->{$method}($value);
     }
 
     /**
@@ -96,7 +98,8 @@ trait GetterSetter
      */
     public function __get(string $name)
     {
-        return $this->getter($name);
+        $method = "get".ucfirst($name);
+        return $this->{$method}();
     }
 
 }
