@@ -1,5 +1,7 @@
 <?php
 
+namespace Sajadsdi\DtoTool;
+
 use Sajadsdi\DtoTool\Concerns\DTOArray;
 use Sajadsdi\DtoTool\Concerns\GetterSetter;
 
