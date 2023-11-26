@@ -1,0 +1,20 @@
+{
+    "name": "sajad/dto-tool",
+    "description": "Tools for DTO Classes to Manage easy",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sajad\\DtoTool\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "SajaD SaeeDi",
+            "email": "thunder11like@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1"
+    }
+}
