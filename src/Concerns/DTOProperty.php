@@ -8,7 +8,7 @@ trait DTOProperty
 {
     use Reflection;
 
-    protected array $properties = [];
+    private array $properties = [];
 
     /**
      * @return array
@@ -19,7 +19,7 @@ trait DTOProperty
         if (!$this->properties) {
             $this->properties = array_map(function ($property) {
                 return $property->getName();
-            }, $this->getProperties($this, \ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PRIVATE));
+            }, $this->getProperties($this, \ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PROTECTED));
         }
         return $this->properties;
     }
