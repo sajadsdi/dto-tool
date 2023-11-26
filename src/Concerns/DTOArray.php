@@ -2,11 +2,9 @@
 
 namespace Sajadsdi\DtoTool\Concerns;
 
-use Sajadsdi\PhpReflection\Concerns\Reflection;
-
 trait DTOArray
 {
-    use Reflection;
+    use DTOProperty;
 
     /**
      * @return array
@@ -16,8 +14,12 @@ trait DTOArray
     {
         $properties = [];
 
-        foreach ($this->getPublicProperties($this) as $property) {
-            $properties[$property] = $this->{$property};
+        foreach ($this->properties() as $property) {
+            if(isset($this->{$property})) {
+                $properties[$property] = $this->{$property};
+            }else{
+                $properties[$property] = null;
+            }
         }
 
         return $properties;
@@ -30,7 +32,7 @@ trait DTOArray
      */
     public function init(array $data): static
     {
-        foreach ($this->getPublicProperties($this) as $property) {
+        foreach ($this->properties() as $property) {
             if(isset($data[$property])){
                 $this->{$property} = $data[$property];
             }
