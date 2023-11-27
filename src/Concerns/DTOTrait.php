@@ -3,7 +3,7 @@
 namespace Sajadsdi\DtoTool\Concerns;
 
 
-trait DTO
+trait DTOTrait
 {
     use DTOArray;
 }
