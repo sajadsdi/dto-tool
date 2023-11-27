@@ -4,7 +4,7 @@ namespace Sajadsdi\DtoTool\Concerns;
 
 trait DTOArray
 {
-    use DTOProperty;
+    use DTOProperty,GetterSetter;
 
     /**
      * @return array
@@ -16,7 +16,8 @@ trait DTOArray
 
         foreach ($this->properties() as $property) {
             if(isset($this->{$property})) {
-                $properties[$property] = $this->{$property};
+                $method = "get".ucfirst($property);
+                $properties[$property] = $this->{$method}();
             }else{
                 $properties[$property] = null;
             }
@@ -34,7 +35,8 @@ trait DTOArray
     {
         foreach ($this->properties() as $property) {
             if(isset($data[$property])){
-                $this->{$property} = $data[$property];
+                $method = "set".ucfirst($property);
+                $this->{$method}($data[$property]);
             }
         }
 

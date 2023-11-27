@@ -34,7 +34,7 @@ trait GetterSetter
      * @param string $string
      * @return bool
      */
-    public function startWith(string $prefix, string $string): bool
+    private function startWith(string $prefix, string $string): bool
     {
         return strncmp($string, $prefix, strlen($prefix)) === 0;
     }

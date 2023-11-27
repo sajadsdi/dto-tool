@@ -2,10 +2,10 @@
 
 namespace Sajadsdi\DtoTool;
 
-use Sajadsdi\DtoTool\Concerns\DTOArray;
-use Sajadsdi\DtoTool\Concerns\GetterSetter;
+
+use Sajadsdi\DtoTool\Concerns\DTOTrait;
 
 abstract class DTO
 {
-    use GetterSetter, DTOArray;
+    use DTOTrait;
 }
