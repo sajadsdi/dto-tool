@@ -13,8 +13,7 @@ trait DTOArray
     public function toArray(): array
     {
         $properties = [];
-
-        foreach ($this->properties() as $property) {
+        foreach ($this->getProperties() as $property) {
             if(isset($this->{$property})) {
                 $method = "get".ucfirst($property);
                 $properties[$property] = $this->{$method}();
@@ -33,7 +32,7 @@ trait DTOArray
      */
     public function init(array $data): static
     {
-        foreach ($this->properties() as $property) {
+        foreach ($this->getProperties() as $property) {
             if(isset($data[$property])){
                 $method = "set".ucfirst($property);
                 $this->{$method}($data[$property]);

@@ -17,7 +17,7 @@ trait GetterSetter
      * @throws PropertyNotFoundException
      * @throws MethodNotFoundException
      */
-    public function __call(string $name, array $arguments): mixed
+    public function __call(string $name, array $arguments = []): mixed
     {
         if ($this->startWith('get', $name)) {
             return $this->getter($name);
@@ -49,7 +49,7 @@ trait GetterSetter
     private function getter(string $name): mixed
     {
         $pName = lcfirst(str_replace('get', '', $name));
-        if (in_array($pName, $this->properties())) {
+        if (in_array($pName, $this->getProperties())) {
             if (isset($this->{$pName})) {
                 return $this->{$pName};
             }
@@ -69,7 +69,7 @@ trait GetterSetter
     private function setter(string $name, mixed $data): static
     {
         $pName = lcfirst(str_replace('set', '', $name));
-        if (in_array($pName, $this->properties())) {
+        if (in_array($pName, $this->getProperties())) {
             $this->{$pName} = $data;
             return $this;
         }

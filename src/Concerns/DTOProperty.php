@@ -8,18 +8,19 @@ trait DTOProperty
 {
     use Reflection;
 
-    private array $properties = [];
+    protected array $properties = [];
 
     /**
+     * @param int $filter
      * @return array
      * @throws \ReflectionException
      */
-    private function properties(): array
+    public function getProperties(int $filter = \ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PRIVATE): array
     {
         if (!$this->properties) {
             $this->properties = array_map(function ($property) {
                 return $property->getName();
-            }, $this->getProperties($this, \ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PROTECTED));
+            }, $this->properties($this, $filter));
         }
         return $this->properties;
     }
