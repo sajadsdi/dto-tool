@@ -1,6 +1,6 @@
 {
     "name": "sajadsdi/dto-tool",
-    "description": "Tools for DTO Classes to Manage easy",
+    "description": "Tools for DTO classes to easy manage",
     "type": "library",
     "license": "MIT",
     "autoload": {
