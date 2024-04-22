@@ -58,7 +58,7 @@ trait GetterSetter
      */
     private function getter(string $name): mixed
     {
-        $pName = lcfirst(str_replace('get', '', $name));
+        $pName = lcfirst(substr($name, 3));
         if (in_array($pName, $this->getProperties())) {
             if (isset($this->{$pName})) {
                 return $this->{$pName};
@@ -79,7 +79,7 @@ trait GetterSetter
      */
     private function setter(string $name, mixed $data): static
     {
-        $pName = lcfirst(str_replace('set', '', $name));
+        $pName = lcfirst(substr($name, 3));
         if (in_array($pName, $this->getProperties())) {
             $this->{$pName} = $data;
             return $this;
